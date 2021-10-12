@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+    .qr-code {
+      max-width: 200px;
+      margin: 10px;
+    }
+  </style>
+    <title>Casper QR Code..!</title> 
+</head>
+<body>
+  <div class=" p-3 mt-5 mr-5 mb-5 container-xxl my-md-4 bd-layout">
+    
+  <div class="col-md-12 themed-grid-col"> 
+    <h1 id="code">Casper QR Code </h1>   
+  </div>
+    <div class="row mb-3 p-5 ">
+      <div class=" col-md-6 themed-grid-col"> 
+        <form>
+          <div class="mb-3 p-1">
+            <label for="receiverAddress" class="form-label">Receiver Address: *</label>
+            <input type="text" class="form-control" id="receiverAddress" aria-describedby="textHelp" >
+            <div id="textHelp" class="form-text"> Enter receiver address in here.</div>
+          </div>
+          <div class="mb-3 p-1">
+            <label for="receiverAmount" class="form-label">Amount:</label>
+            <input type="password" class="form-control" id="receiverAmount">
+             <div id="textHelp" class="form-text"> Enter Amount here.</div>
+          </div>                      
+        </form> 
+        <button type="button" class="btn btn-primary" id="generate">QR Code Generate</button> 
+     
+      </div>
+      <div class="col-md-3 themed-grid-col align-items-center">      
+          <!-- Get a Placeholder image initially,
+           this will change according to the
+           data entered later -->
+          <button type="button" class="btn btn-primary" id="downloaded">
+           <a href="https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=320x320&chld=L|0" class="qr-ref" >
+          <img src="https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=320x320&chld=L|0"
+                    class="qr-code img-thumbnail img-responsive" id="qr.png"/>
+          </a>
+             Download QR</button>               
+      </div>
+    </div>
+ </div> 
+
+  <script src=
+    "https://code.jquery.com/jquery-3.5.1.js">
+  </script>
+  
+  <script>
+    // Function to HTML encode the text
+    // This creates a new hidden element,
+    // inserts the given text into it 
+    // and outputs it out as HTML
+    function htmlEncode(value) {
+      return $('<div/>').text(value)
+        .html();
+    }
+  
+    $(function () {
+  
+      // Specify an onclick function
+      // for the generate button
+      $('#generate').click(function () {
+  
+        // Generate the link that would be
+        // used to generate the QR Code
+        // with the given data 
+        let finalURL =
+'https://chart.googleapis.com/chart?cht=qr&chl=' +
+          htmlEncode($('#receiverAddress').val()) +
+          '&chs=320x320&chld=L|0'
+  
+        // Replace the src of the image with
+        // the QR code image
+        $('.qr-code').attr('src', finalURL); 
+        $('.qr-ref').attr('href', finalURL); 
+        $('.qr-ref').attr('target', '_blank');
+        $('.qr-ref').attr('download');  
+      });          
+    });    
+  </script>
+</body>
+</html>
