@@ -89,7 +89,7 @@ Content
 
 $ cd /var/www/
 
-$ git clone git@github.com:rromero89/cspr-qr-generator.git
+$ git clone https://github.com/rromero89/cspr-qr-generator.git
 
 $ git checkout master
 
