@@ -1,0 +1,25 @@
+025-38-001
+010-66-001
+E352836
+
+https://forum.xda-developers.com/redmi-note-3/help/sound-voice-call-lineage-14-1-t3546237
+
+If you are encoutering the same issue, you should :
+
+Root your phone
+
+Download a root file explorer
+
+Open the file build.prop located in /system
+
+Find the lane "persist.vendor.audio.fluence.voicecall=true" (might vary a little bit)
+
+Replace it by "persist.vendor.audio.fluence.voicecall=false" (Without quotes ofc)
+
+Save build.prop and double check that saves have been done
+
+Reboot your phone
+
+Be careful when playing with the build.prop because it may result in a bootloop!!
+
+You should now be able to call people!
